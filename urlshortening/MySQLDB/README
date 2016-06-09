@@ -1,0 +1,30 @@
+DBA team has automation in place to execute MySQL scripts on release (ITE), PT and staging environments. To facilitate this automation, they needed all MySQL files and related special instructions to be copied to a consistent location for all releases for a given repository. Different releases have different set of instructions and MySQL scripts. These need to be copied in release-based folder inside MySQLDB directory. 'MySQLDB' directory is placed immediately inside a given repository.
+
+Following convention is in use:
+Path for wrapper file					: <repository_name>/MySQLDB/<BRANCH-NAME>/wrapper.sql
+Path for Rollback Wrapper file			: <repository_name>/MySQLDB/<BRANCH-NAME>/rollback/rollback_wrapper.sql
+Path for Special Instruction file		: <repository_name>/MySQLDB/<BRANCH-NAME>/special-instructions-db.txt
+
+
+For example, for Snapdeal repository with branch Release_V17.1,
+Path for wrapper file                   : git/Snapdeal/MySQLDB/Release_V17.1/wrapper.sql
+Path for Rollback Wrapper file          : git/Snapdeal/MySQLDB/Release_V17.1/rollback/rollback_wrapper.sql
+Path for Special Instruction file		: git/Snapdeal/MySQLDB/Release_V17.1/special-instructions-db.txt
+
+
+[ec2-user@release_box special-Instruction]$ pwd
+.../cams/MySQLDB
+
+[ec2-user@release_box special-Instruction]$ ls -ltr
+total 80
+drwxrwxr-x 2 ec2-user ec2-user 4096 Jan 17 08:02 release-cams_video_support_04122014
+drwxrwxr-x 2 ec2-user ec2-user 4096 Jan 28 08:01 release-cams_feedback_video_supp_2015.01.29
+drwxrwxr-x 2 ec2-user ec2-user 4096 Mar  3 08:02 release-cams_2015.02.17
+drwxrwxr-x 2 ec2-user ec2-user 4096 Mar 17 08:01 release-cams_attribute_standardization_24032015
+
+[ec2-user@release_box special-Instruction]$ ls -ltr release-cams_2015.02.17
+total 8
+-rw-rw-r-- 1 ec2-user ec2-user 297 Mar  3 08:02 special-instructions-db.txt
+-rw-rw-r-- 1 ec2-user ec2-user  91 Mar  3 08:02 wrapper.sql
+
+A mail was also sent regarding this with subject: "MySQL DB Wrapper automation for Non Prod environment" on Wed, Dec 3, 2014.

@@ -1,0 +1,23 @@
+Deployment on staging and production environments is done by prod support team. Many deployments on the aforementioned environments require some special instructions to be executed. Different releases have different set of instructions. These instructions need to be copied in release-based folder inside special-Instruction directory. 'special-Instruction' directory is placed immediately inside a given repository.
+
+For example, say a release named 'release-cams_nov13' has some set of instructions, then these instructions should be placed inside the following folder in a text file:
+
+<repository_name>/special-Instruction/release-cams_nov13/
+
+Similarly, instructions for other releases need to be in their respective folder. For example,
+
+[ec2-user@release_box special-Instruction]$ pwd
+.../cams/special-Instruction
+
+[ec2-user@release_box special-Instruction]$ ls -ltr
+total 80
+drwxrwxr-x 2 ec2-user ec2-user 4096 Sep 22 08:01 release-cams_phase2_mv_21052013
+drwxrwxr-x 2 ec2-user ec2-user 4096 Sep 22 08:01 release-cams_ph2_mv_21052013
+drwxrwxr-x 2 ec2-user ec2-user 4096 Sep 22 08:01 release-cams_nov13
+drwxrwxr-x 2 ec2-user ec2-user 4096 Sep 22 08:01 release-cams_mln3
+drwxrwxr-x 2 ec2-user ec2-user 4096 Sep 22 08:01 release-cams_mln2
+drwxrwxr-x 2 ec2-user ec2-user 4096 Sep 22 08:01 release-cams_minor_27012014
+
+When a build is triggered for staging environment, then at that time, this special-Instruction folder is zipped and sent along with the build to prod support team. We also let them know about the sub-folder (release name) that they need to choose for the instructions.
+
+A mail was also sent regarding this with subject: "Provision of Special-Instructions and scripts to prodsupport team" on Wed, Jul 9, 2014

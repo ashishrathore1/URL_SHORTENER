@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver</property>
+
+		<property name="maxIdleTime">180</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">20</property>
+		<property name="initialPoolSize">20</property>
+		<property name="preferredTestQuery">SELECT 1</property>
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">none</property>
+
+		<mapping class="com.urlshortener.entity.URLShortener" />
+		<mapping class="com.urlshortener.entity.ApplicationSettingsEntity" />
+		<mapping class="com.urlshortener.hits.entity.UrlHits" />
+		<mapping class="com.urlshortener.entity.ApiEntity" />
+	
+	</session-factory>
+</hibernate-configuration>
